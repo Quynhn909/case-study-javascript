@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Trip Management</title>
+</head>
+<body>
+    <h1>Case Study: Trip Management</h1>
+    <form action="">
+        <label for="">City: </label>
+        <input type="text" id="city"><br>
+
+        <label for="">Duration</label>
+        <input type="text" id="duration"><br>
+
+        <label for="">Type: </label>
+        <input type="text" id="type"><br>
+
+        <label for="">Airline: </label>
+        <input type="text" id="airline"><br>
+
+
+        <label for="">Visa: </label>
+        <input type="text" id="visa"><br>
+
+        <label for="">Cost: </label>
+        <input type="text" id="cost"><br>
+
+        <button type="button" id="btn-add" onclick="addTrip()">Add new trip</button>
+
+    </form>
+    <table id="trip-table">
+        <tr>
+            <th>No.</th>
+            <th>City</th>
+            <th>Duration</th>
+            <th>Type</th>
+            <th>Airline</th>
+            <th>Visa</th>
+            <th>Cost</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Tokyo</td>
+            <td>10 days</td>
+            <td>Vacation</td>
+            <td>Japan Airlines</td>
+            <td>Visitor</td>
+            <td>1500 USD</td>
+        </tr>
+    </table>
+
+    <script src="./script.js"></script>
+</body>
+</html>
