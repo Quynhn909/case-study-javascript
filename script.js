@@ -1,5 +1,6 @@
 class Trip {
-    constructor(city, duration, type, airline, visa, cost){
+    constructor(tripID, city, duration, type, airline, visa, cost){
+        this.tripID = tripID;
         this.city = city;
         this.duration = duration;
         this.type = type;
@@ -11,6 +12,7 @@ class Trip {
     
     showInfo() {
         console.log('--------------------------');
+        console.log(`ID: ${this.tripID}`);
         console.log(`City: ${this.city}`);
         console.log(`Duration: ${this.duration}`);
         console.log(`Type: ${this.type}`);
@@ -21,22 +23,20 @@ class Trip {
     }
     }
 
-// vehicle1 = new Vehicle("Nguyen Van A", "Wave", "50", "10000000");
-// vehicle1 = new Vehicle("Tran Van B", "honda", "150", "25000000");
 
-// vehicle1.showInfo();
-// vehicle2.showInfo();
 
 function addTrip(){
+    let tripID = document.getElementById("trip-ID").value;
     let city = document.getElementById("city").value;
     let duration = document.getElementById("duration").value;
     let type = document.getElementById("type").value;
     let airline = document.getElementById("airline").value;
     let visa = document.getElementById("visa").value;
     let cost = parseFloat(document.getElementById("cost").value);
+  
 
-    // create new vehicle object
-    let newTrip = new Trip(city, duration, type, airline, visa, cost);
+    // create new object
+    let newTrip = new Trip(tripID, city, duration, type, airline, visa, cost);
 
     // add new object to array
     tripArray.push(newTrip);
@@ -47,14 +47,15 @@ function addTrip(){
     updateTripTable(tripArray);
 }
 
-function searchTrip (){
+function searchTrip(){
+   
     let searchID =  document.getElementById("search-value").value
 
     for (let i in tripArray){
         let trip = tripArray[i];
-        if (trip.city === searchID) {
+        if (trip.tripID == searchID){
             trip.showInfo();
-            alert(`Owner Name: ${trip.city}, trip type: ${trip.type}, duration: ${trip.duration}`);
+            alert(`City: ${trip.city}, trip type: ${trip.type}, duration: ${trip.duration}`);
         }
     }
 }
@@ -66,11 +67,13 @@ function deleteTrip(){
         let trip =  tripArray[i];
         if (trip.tripID == searchID){
             break;
+        
         }
     }
 }
 
 function updateTrip(){
+    let tripID = document.getElementById("trip-id").value;
     let city = document.getElementById("city").value;
     let duration = document.getElementById("duration").value;
     let type = document.getElementById("type").value;
@@ -78,8 +81,17 @@ function updateTrip(){
     let visa = document.getElementById("visa").value;
     let cost = parseFloat(document.getElementById("cost").value);
 
+    let newTrip = new Trip(tripID, city, duration, type, airline, visa, cost);
+
+    tripArray.push(newTrip);
+    
+    alert("Trip is updated successfully!");
+    console.log(tripArray);
+
+    updateTripTable(tripArray);
+
 }
-// update vehicle table based on data array
+// update table based on data array
 function updateTripTable(data){
 let tableElem = document.getElementById("trip-table");
 tableElem.remove();
@@ -89,7 +101,7 @@ tableElem.remove();
 let newTableElem = document.createElement("table");
 
 // set id for new table
-newTableElem.setAttribute("id", "trip-table");
+newTableElem.setAttribute("trip-ID", "trip-table");
 
 // create heading row
 let newRowElem = document.createElement("td");
@@ -101,7 +113,7 @@ let heading5 = document.createElement("th");
 let heading6 = document.createElement("th");
 let heading7 = document.createElement("th");
 
-heading1.innerText = "No.";
+heading1.innerText = "ID";
 heading2.innerText = "city";
 heading3.innerText = "duration";
 heading4.innerText = "type";
@@ -136,6 +148,7 @@ for (let i in data){
     
     
     info1.innerText = i;
+    info2.innerText = trip.tripID;
     info2.innerText = trip.city;
     info3.innerText = trip.duration;
     info4.innerText = trip.type;

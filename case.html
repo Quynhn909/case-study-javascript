@@ -8,10 +8,14 @@
 <body>
     <h1>Case Study: Trip Management</h1>
     <form action="">
+
+        <label for="">ID: </label>
+        <input type="text" id="trip-ID"><br>
+
         <label for="">City: </label>
         <input type="text" id="city"><br>
 
-        <label for="">Duration</label>
+        <label for="">Duration: </label>
         <input type="text" id="duration"><br>
 
         <label for="">Type: </label>
@@ -27,12 +31,29 @@
         <label for="">Cost: </label>
         <input type="text" id="cost"><br>
 
+        <br>
         <button type="button" id="btn-add" onclick="addTrip()">Add new trip</button>
 
+        <button type="button" id="btn-update" onclick="updateTrip()">Update trip</button>
+
     </form>
+<br>
+    <form action="">
+        <label for="">Input ID to search: </label>
+        <input type="text" id="search-value"><br>
+        <button type="button" id="btn-search" onclick="searchTrip()">Search</button>
+    </form>
+    <br>
+    <form action="">
+        <label for="">Input ID to delete: </label>
+        <input type="text" id="search-value"><br>
+        <button type="button" id="btn-delete" onclick="deleteTrip()">Delete</button>
+    </form>
+    <br>
+    <br>
     <table id="trip-table">
         <tr>
-            <th>No.</th>
+            <th>ID</th>
             <th>City</th>
             <th>Duration</th>
             <th>Type</th>
@@ -41,7 +62,7 @@
             <th>Cost</th>
         </tr>
         <tr>
-            <td>1</td>
+            <td>A1</td>
             <td>Tokyo</td>
             <td>10 days</td>
             <td>Vacation</td>
